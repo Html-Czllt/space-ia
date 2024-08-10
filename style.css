@@ -7,7 +7,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #282c34; /* Cor de fundo escura para contraste */   
+    background-color: #121d33; /* Cor de fundo escura para contraste */   
     color: #f0f0f0; /* Cor do texto para melhorar a legibilidade */
 }
 
@@ -33,7 +33,7 @@ body {
 }
 
 .central-image:hover {
-    box-shadow: rgba(62, 146, 167, 0.315) 0px 0px 20px;
+    box-shadow: rgba(62, 146, 167, 0.315    ) 0px 0px 20px;
     /* A sombra será aplicada quando o mouse estiver sobre a imagem */
 }
 
@@ -61,7 +61,7 @@ button:hover {
     padding: 20px;
      border-radius: 8px; /* Bordas arredondadas */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra leve para destacar */
-    color: #333; /* Cor do texto */
+    color: #ffd6a4;/* Cor do texto */
     max-width: 800px; /* Limite de largura */
     margin: auto; /* Centralizar o cartão */
 }
@@ -99,5 +99,11 @@ button:hover {
 
     #narrative-text {
         font-size: 16px;
+    }
+
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
