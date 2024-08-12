@@ -1,4 +1,5 @@
 
+
 document.addEventListener('DOMContentLoaded', () => {
     const home = document.getElementById('home');
     const narrative = document.getElementById('narrative');
