@@ -7,14 +7,19 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #121d33; /* Cor de fundo escura para contraste */   
+    background-color: #212833; /* Cor de fundo escura para contraste */   
     color: #f0f0f0; /* Cor do texto para melhorar a legibilidade */
 }
 
 .content {
     text-align: center;
-    width: 80%;
+    width: 100%;
     max-width: 800px;
+    padding: 0 10px; /* Adiciona um pouco de espaçamento nas laterais */
+    box-sizing: border-box; /* Inclui o padding na largura total */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza itens horizontalmente */
 }
 
 .message {
@@ -29,19 +34,62 @@ body {
     max-width: 400px;
     margin: 20px 0;
     border-radius: 8%;
-    transition: box-shadow 0.5s; /* Transição suave para a sombra */
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s, filter 0.5s;
+    filter: grayscale(100%) brightness(80%); /* Preto e branco com brilho reduzido */
 }
 
 .central-image:hover {
-    box-shadow: rgba(62, 146, 167, 0.315    ) 0px 0px 20px;
-    /* A sombra será aplicada quando o mouse estiver sobre a imagem */
+    transform: scale(1.1) translateZ(0); /* Amplia a imagem ao passar o mouse */
+    filter: grayscale(0%) brightness(100%); /* Remove o preto e branco e ajusta o brilho */
 }
+
+.central-image:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1); /* Camada de sobreposição sutil para efeito de profundidade */
+    transition: opacity 0.5s;
+    opacity: 0;
+}
+
+.central-image:hover::before {
+    opacity: 1; /* Aumenta a opacidade ao passar o mouse */
+}
+
+/* Efeito de movimento da imagem conforme o mouse se move */
+.central-image {
+    perspective: 1000px; /* Define a perspectiva */
+}
+
+.central-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    transition: transform 0.5s;
+}
+
+.central-image:hover::after {
+    transform: translateX(calc((100% - 100vw) / 2)) translateY(calc((100% - 100vh) / 2)); /* Move a imagem com base na posição do mouse */
+}
+
+
+
+
 
 button {
     background-color: #3c4048; /* Versão mais clara da cor de fundo escura */
     border: 2px solid #2a2d35; /* Cor da borda um pouco mais escura */
     color: #ffaf4d; /* Cor clara para boa legibilidade sobre o fundo escuro */
-        padding: 12px 24px;
+    padding: 12px 24px;
     font-size: 18px;
     cursor: pointer;
     border-radius: 8px;
@@ -59,10 +107,10 @@ button:hover {
 /* Estilos do conteúdo da narrativa */
 #narrative-card {
     padding: 20px;
-     border-radius: 8px; /* Bordas arredondadas */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra leve para destacar */
-    color: #ffd6a4;/* Cor do texto */
-    max-width: 800px; /* Limite de largura */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0px 4px 12px rgb(0, 0, 0); /* Sombra leve para destacar */
+    color: #ffffff; /* Cor do texto */
+    max-width: 100%; /* Garante que o cartão não ultrapasse a tela */
     margin: auto; /* Centralizar o cartão */
 }
 
@@ -92,18 +140,31 @@ button:hover {
 
 /* Media queries */
 @media (max-width: 600px) {
+    body {
+        display: flex;
+        flex-direction: column; /* Alinha itens verticalmente */
+        justify-content: center;
+        align-items: center;
+        padding: 0; /* Remove o padding */
+    }
+
+    .content {
+        width: 100%;
+        padding: 0; /* Remove o padding para evitar deslocamento */
+    }
+
     button {
         padding: 10px 20px;
         font-size: 16px;
     }
 
-    #narrative-text {
-        font-size: 16px;
+    #narrative-card {
+        padding: 15px;
+        max-width: 100%; /* Garante que o cartão não ultrapasse a tela */
+        box-sizing: border-box; /* Inclui padding na largura total */
     }
 
-    body{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    #narrative-text {
+        font-size: 16px;
     }
 }
