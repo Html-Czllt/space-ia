@@ -7,31 +7,104 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #000000;   
-    background-size: cover; /* Ajusta a imagem para cobrir todo o fundo */
-    color: #FFFFFF; /* Texto branco */
+    background-image: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZW1rc2Izb2xlMzQ3ZmR1MXBrbThqZmg4bWE2YXlxMHhyZHl5MDlvdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1nbweFkb6kqVhNCwJ4/giphy.webp'); /* Substitua pelo caminho da sua imagem */  
+    background-size: cover; /* Faz a imagem cobrir toda a tela */
+    background-position: center; /* Centraliza a imagem de fundo */
+    background-repeat: no-repeat; /* Evita repetição da imagem */      color: #FFFFFF; /* Texto branco */
 }
 
+/* Container centralizado */
 .content {
     text-align: center;
-    width: 90%; /* Ajusta a largura para se afastar das bordas */
+    width: 90%;
     max-width: 800px;
-    padding: 20px; /* Adiciona mais espaçamento ao redor do conteúdo */
-    box-sizing: border-box; /* Inclui o padding na largura total */
+    padding: 20px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza itens horizontalmente */
+    align-items: center;
 }
 
+/* Estilos das mensagens e imagens */
 .message, .central-image, #narrative-card, #choices-container button, #end-text {
-    background-color: #000000; /* Fundo preto para melhorar legibilidade */
-    color: #FFFFFF; /* Texto branco para contraste com fundo preto */
-    padding: 12px;
-    border: #003366 2px solid; /* Borda azul escuro fosco */
-    border-radius: 9px;
-    font-size: 20px; /* Aumenta o tamanho da fonte */
-    font-weight: bold; /* Torna o texto mais grosso */
-    position: relative; /* Necessário para o fundo preto atrás do texto */
+    background-color: #000000; /* Preto para o fundo */
+    color: #FFFFFF; /* Texto branco para contraste */
+    padding: 16px;
+    border: 2px solid #FFFFFF; /* Bordas brancas para destaque */
+    border-radius: 12px; /* Cantos arredondados para suavidade */
+    font-size: 20px; /* Tamanho de fonte legível */
+    font-weight: bold; /* Fonte em negrito para ênfase */
+    position: relative;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5); /* Sombra branca suave */
+    transition: box-shadow 0.3s, border-color 0.3s; /* Transição suave para interações */
+}
+
+.message{
+    white-space: nowrap; /* Impede a quebra de linha */
+
+}
+
+
+
+/* Efeitos de hover para botões */
+button {
+    background-color: #000000; /* Preto */
+    border: 2px solid #FFFFFF; /* Bordas brancas */
+    color: #FFFFFF; /* Texto branco */
+    padding: 12px 24px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    margin: 10px; /* Espaçamento entre botões */
+}
+
+/* Efeitos de hover para botões com arco-íris */
+button:hover {
+    background-color: #000000; /* Preto */
+    color: #FFFFFF; /* Texto branco */
+    border-color: #FFFFFF; /* Borda branca */
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.7); /* Brilho branco intenso */
+    animation: rainbow-border 1s infinite; /* Animação de arco-íris */
+    transform: scale(1.05); /* Leve aumento */
+}
+
+/* Efeito de clique dos botões */
+button:active {
+    background-color: #000000; /* Preto */
+    color: #FFFFFF; /* Texto branco */
+    border-color: #FFFFFF; /* Borda branca */
+    box-shadow: inset 0px 0px 5px rgba(255, 255, 255, 0.5); /* Sombra interna branca */
+    transform: scale(0.98); /* Leve redução de tamanho */
+}
+
+/* Efeito de arco-íris na borda */
+@keyframes rainbow-border {
+    0% {
+        border-color: #000000; /* Vermelho */
+    }
+    14% {
+        border-color: #2c2c2c; /* Violeta */
+    }
+    28% {
+        border-color: #525252; /* Índigo */
+    }
+    42% {
+        border-color: #cccccc; /* Vermelho */
+    }
+    57% {
+        border-color: #cccccc; /* Vermelho */
+    }
+    71% {
+        border-color: #525252; /* Índigo */
+    }
+    85% {
+        border-color: #2c2c2c; /* Violeta */
+    }
+    100% {
+        border-color: #000000; /* Vermelho */
+    }
 }
 
 /* Estilos da imagem central */
@@ -43,6 +116,7 @@ body {
     position: relative;
     overflow: hidden;
     transition: transform 0.5s ease, filter 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
+    border: 2px solid #FFFFFF; /* Borda branca padrão */
 }
 
 .central-image::before {
@@ -52,7 +126,6 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 51, 102, 0.5); /* Azul escuro fosco com transparência */
     z-index: 1;
     transition: opacity 0.5s ease;
     opacity: 0;
@@ -64,72 +137,60 @@ body {
 
 .central-image:hover {
     transform: scale(1.1); /* Aumenta a imagem em 10% */
-    filter: brightness(1.3); /* Aumenta o brilho */
-    box-shadow: 0 0 20px rgba(0, 51, 102, 0.8); /* Brilho de neon azul escuro */
-    border: 4px solid #003366; /* Borda azul escuro fosco */
+    filter: brightness(1.2); /* Aumenta o brilho */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6); /* Brilho branco */
 }
 
-
-button {
-    background-color: #000000; /* Preto puro */
-    border: 2px solid #003366; /* Borda azul escuro fosco */
-    color: #003366; /* Texto azul escuro fosco */
-    padding: 12px 24px;
-    font-size: 20px; /* Aumenta o tamanho da fonte */
-    font-weight: bold; /* Torna o texto mais grosso */
-    cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
-    margin-top: 20px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Sombra de texto para legibilidade */
-}
-
-button:hover {
-    background-color: #003366; /* Azul escuro fosco para o fundo ao passar o mouse */
-    color: #000000; /* Preto para o texto ao passar o mouse */
-    border-color: #003366; /* Azul escuro fosco para a borda ao passar o mouse */
-    box-shadow: 0px 8px 15px rgba(0, 51, 102, 0.2); /* Sombra azul escuro fosco ao passar o mouse */
-}
-
-/* Estilos do conteúdo da narrativa */
+/* Estilos do cartão de narrativa */
 #narrative-card {
     padding: 20px;
-    border-radius: 8px; /* Bordas arredondadas */
-    box-shadow: 0px 4px 22px rgba(0, 51, 102, 0.692); /* Sombra azul escuro fosco para destacar */
-    color: #ffffff; /* Texto branco */
-    max-width: 100%; /* Garante que o cartão não ultrapasse a tela */
-    margin: auto; /* Centralizar o cartão */
-    background-color: #000000; /* Fundo preto */
-    font-size: 20px; /* Aumenta o tamanho da fonte */
-    font-weight: bold; /* Torna o texto mais grosso */
+    border-radius: 12px;
+    box-shadow: 0px 4px 22px rgba(255, 255, 255, 0.4); /* Sombra branca */
+    color: #FFFFFF; /* Texto branco */
+    max-width: 100%;
+    margin: auto;
+    background-color: #000000; /* Preto */
+    font-size: 20px;
+    font-weight: bold;
 }
 
 /* Estilos das opções de resposta */
 #choices-container button {
-    background-color: #000000; /* Preto puro */
-    border: 2px solid #003366; /* Borda azul escuro fosco */
-    color: #003366; /* Texto azul escuro fosco */
+    background-color: #000000; /* Preto */
+    border: 2px solid #FFFFFF; /* Bordas brancas */
+    color: #FFFFFF; /* Texto branco */
     padding: 12px 24px;
-    font-size: 20px; /* Aumenta o tamanho da fonte */
-    font-weight: bold; /* Torna o texto mais grosso */
+    font-size: 20px;
+    font-weight: bold;
     cursor: pointer;
     border-radius: 8px;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Sombra de texto para legibilidade */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    margin: 10px; /* Espaçamento entre botões */
 }
 
 #choices-container button:hover {
-    background-color: #003366; /* Azul escuro fosco para o fundo ao passar o mouse */
-    color: #000000; /* Preto para o texto ao passar o mouse */
-    border-color: #003366; /* Azul escuro fosco para a borda ao passar o mouse */
-    box-shadow: 0px 8px 15px rgba(0, 51, 102, 0.2); /* Sombra azul escuro fosco ao passar o mouse */
+    background-color: #000000; /* Preto */
+    color: #FFFFFF; /* Texto branco */
+    border-color: #FFFFFF; /* Borda branca */
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.7); /* Brilho branco intenso */
+    animation: rainbow-border 1s infinite; /* Animação de arco-íris */
+    transform: scale(1.05); /* Leve aumento */
 }
 
+#choices-container button:active {
+    background-color: #000000; /* Preto */
+    color: #FFFFFF; /* Texto branco */
+    border-color: #FFFFFF; /* Borda branca */
+    box-shadow: inset 0px 0px 5px rgba(255, 255, 255, 0.5); /* Sombra interna branca */
+    transform: scale(0.98); /* Leve redução de tamanho */
+}
+
+/* Estilos do texto final */
 #end-text {
-    box-shadow: 0px 4px 22px rgba(0, 51, 102, 0.692); /* Sombra azul escuro fosco para destacar */
+    box-shadow: 0px 4px 22px rgba(255, 255, 255, 0.4); /* Sombra branca */
     font-size: 24px; /* Aumenta o tamanho da fonte */
     color: #FFFFFF; /* Texto branco */
-    background-color: #000000; /* Fundo preto */
+    background-color: #000000; /* Preto */
     padding: 10px;
     border-radius: 8px;
     font-weight: bold; /* Torna o texto mais grosso */
