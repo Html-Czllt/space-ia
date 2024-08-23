@@ -196,6 +196,32 @@ button:active {
     font-weight: bold; /* Torna o texto mais grosso */
 }
 
+/* Estilos da tela de fim */
+#end-screen {
+    text-align: center; /* Centraliza o texto e a imagem */
+}
+
+.end-image {
+width: 300px;    
+height: 300px;
+    display: block; /* Garante que a imagem seja tratada como um bloco para centralização */
+    margin: 0 auto; /* Centraliza a imagem horizontalmente */
+    max-width: 100%; /* Garante que a imagem não ultrapasse a largura do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+    margin: 16px; /* Espaçamento abaixo da imagem */
+    border: white solid 2px;
+    border-radius:8% ;
+}
+
+#end-text {
+    margin: 16px 0; /* Espaçamento acima e abaixo do texto */
+}
+
+#restart-btn {
+    margin-top: 16px; /* Espaçamento acima do botão */
+}
+
+
 /* Media queries */
 @media (max-width: 600px) {
     body {
