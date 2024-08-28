@@ -1,3 +1,4 @@
+
 /* Estilos da página inicial */
 body {
     font-family: Arial, sans-serif;
@@ -10,7 +11,8 @@ body {
     background-image: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZW1rc2Izb2xlMzQ3ZmR1MXBrbThqZmg4bWE2YXlxMHhyZHl5MDlvdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1nbweFkb6kqVhNCwJ4/giphy.webp'); /* Substitua pelo caminho da sua imagem */  
     background-size: cover; /* Faz a imagem cobrir toda a tela */
     background-position: center; /* Centraliza a imagem de fundo */
-    background-repeat: no-repeat; /* Evita repetição da imagem */      color: #FFFFFF; /* Texto branco */
+    background-repeat: no-repeat; /* Evita repetição da imagem */    
+      color: #FFFFFF; /* Texto branco */
 }
 
 /* Container centralizado */
@@ -41,7 +43,6 @@ body {
 
 .message{
     white-space: nowrap; /* Impede a quebra de linha */
-
 }
 
 

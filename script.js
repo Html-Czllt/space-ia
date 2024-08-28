@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const home = document.getElementById('home');
     const narrative = document.getElementById('narrative');
@@ -339,6 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     let currentStep = 0;
+    let clickCount = 0;
 
     function showStep(step) {
         const storyStep = story[step];
@@ -368,12 +370,48 @@ document.addEventListener('DOMContentLoaded', () => {
     function endGame() {
         narrative.style.display = 'none';
         endScreen.style.display = 'block';
+        centerRestartButton();
+    }
+
+    function moveRestartButtonRandomly() {
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        const maxWidth = windowWidth - restartBtn.offsetWidth;
+        const maxHeight = windowHeight - restartBtn.offsetHeight;
+
+        const randomX = Math.random() * maxWidth;
+        const randomY = Math.random() * maxHeight;
+
+        restartBtn.style.position = 'absolute';
+        restartBtn.style.left = `${randomX}px`;
+        restartBtn.style.top = `${randomY}px`;
+    }
+
+    function centerRestartButton() {
+        const endScreenRect = endScreen.getBoundingClientRect();
+        const restartBtnRect = restartBtn.getBoundingClientRect();
+
+        const x = (endScreenRect.width - restartBtnRect.width) / 2 + endScreenRect.left;
+        const y = endScreenRect.bottom + 20;
+
+        restartBtn.style.position = 'absolute';
+        restartBtn.style.left = `${x}px`;
+        restartBtn.style.top = `${y}px`;
+    }
+
+    function handleRestartButtonClick() {
+        clickCount += 1;
+
+        if (clickCount < 4) {
+            moveRestartButtonRandomly();
+        } else {
+            window.location.href = 'space.html'; // Substitua pelo URL desejado
+        }
     }
 
     startBtn.addEventListener('click', startGame);
-    restartBtn.addEventListener('click', () => {
-        endScreen.style.display = 'none';
-        home.style.display = 'block';
-        currentStep = 0;
-    });
+    restartBtn.addEventListener('click', handleRestartButtonClick);
+
+    // Centraliza o botão abaixo do texto final ao carregar a página
+    centerRestartButton();
 });
